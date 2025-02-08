@@ -7,7 +7,6 @@ import ColorButton from './components/Button';
 function App() {
 
   const [color, setColor] = useState('olive');
-  const [darkMode, setDarkMode] = useState(false);
 
   const colors = ["green", "red", "blue", "orange", "black", "yellow", "pink", "purple"];
 
