@@ -4,12 +4,20 @@ import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 
 const PasswordGeneratorUI = () => {
   const [password, setPassword] = React.useState('');
+  const [buttonText, setButtonText] = React.useState("Copy");
   const [includeNumbers, setIncludeNumbers] = React.useState(true);
   const [includeSpecialChars, setIncludeSpecialChars] = React.useState(true);
   const [passwordLength, setPasswordLength] = React.useState(6);
 
+
+  //useRef Hook
   const handleCopyPassword = () => {
-    navigator.clipboard.writeText(password);
+    window.navigator.clipboard.writeText(password);
+    setButtonText("Copied"); // Change text to "Copied"
+    
+    setTimeout(() => {
+      setButtonText("Copy"); // Revert back to "Copy" after 2 seconds
+    }, 2000);
   };
 
   const handleSliderChange = (event, newValue) => {
@@ -67,7 +75,7 @@ const PasswordGeneratorUI = () => {
         fullWidth
         sx={{ marginBottom: 2 }}
       >
-        Copy Password
+        {buttonText}
       </Button>
 
       <FormControlLabel
