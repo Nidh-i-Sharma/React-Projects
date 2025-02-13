@@ -40,11 +40,12 @@ const Header = () => {
 
           {/* Navigation Links (Desktop) */}
           <div className="nav-links" sx={{ display: { xs: "none", sm: "block" } }}>
-            {navLinks.map((text) => (
-              <Button key={text} color="inherit">
-                {text}
-              </Button>
-            ))}
+          {navLinks.map(({ text, path }) => (
+  <Button key={text} color="inherit" component={Link} to={path}>
+    {text}
+  </Button>
+))}
+
           </div>
 
           {/* Mobile Menu Icon */}
@@ -63,12 +64,12 @@ const Header = () => {
       {/* Mobile Drawer (Side Menu) */}
       <Drawer anchor="right" open={open} onClose={toggleDrawer(false)}>
       <List>
-          {navLinks.map(({ text, path }) => (
-            <ListItem button key={text} component={Link} to={path} onClick={toggleDrawer(false)}>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
-        </List>
+    {navLinks.map(({ text, path }) => (
+      <ListItem button key={text?.toString()} component={Link} to={path} onClick={toggleDrawer(false)}>
+        <ListItemText primary={text} />
+      </ListItem>
+    ))}
+  </List>
       </Drawer>
     </>
   );
